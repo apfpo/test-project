@@ -1,0 +1,6 @@
+<div class="week">
+  <ng-container *ngFor="let item of items">
+    <app-day [info]="item"></app-day>
+  </ng-container>
+  <router-outlet></router-outlet>
+</div>

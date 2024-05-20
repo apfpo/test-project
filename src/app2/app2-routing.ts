@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { App2Component } from './app2.component';
 import { DayComponent } from './day/day.component';
 
 const routes: Routes = [
@@ -8,10 +8,3 @@ const routes: Routes = [
   { path: 'schedule', component: DayComponent },
   { path: '**', redirectTo: 'weather' }
 ];
-
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

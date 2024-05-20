@@ -1,0 +1,22 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <ng-container *ngIf="curr == '/weather'; else otherTemplate">
+      <ng-template>
+        <h5 class="card-title"> {{info?.day}}</h5>
+        <p class="card-text">
+
+        </p>
+      </ng-template>
+    </ng-container>
+
+  </div>
+</div>
+
+
+<ng-template #otherTemplate>
+  <h5 class="card-title">{{info?.day}} ***</h5>
+  <p class="card-text">
+
+  </p>
+</ng-template>
+
