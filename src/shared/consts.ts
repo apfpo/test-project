@@ -2,93 +2,61 @@ export const NAV_ITEMS = [
   "Weather", "TimeTable"
 ];
 
-export type WEATHER = {
+export type ITEM = {
+  date: string;
   day: string;
-  temperature: string;
-  type: string;
-  air: string;
-}
+  weather: {
+    temperature: string;
+    type: string;
+    air: string;
+  };
+  schedule: {
+    todos: string;
+    dayoff: boolean
 
-export type TIMETABLE = {
-  day: string;
-  todos: string;
-  dayoff: string;
-}
-
-export const WEATHER_ITEMS = [
-  {
-    day: 'Monday',
-    temperature: "+20",
-    type: 'Sunny',
-    air: '50'
-  },
-  {
-    day: 'Tuesday',
-    temperature: "+23",
-    type: 'Sunny',
-    air: '59'
-  },{
-    day: 'Wednesday',
-    temperature: "+19",
-    type: 'Cloudy',
-    air: '80'
-  },{
-    day: 'Thursday',
-    temperature: "+15",
-    type: 'Rain',
-    air: '46'
-  },{
-    day: 'Friday',
-    temperature: "+17",
-    type: 'Light Rain',
-    air: '55'
-  },{
-    day: 'Saturday',
-    temperature: "+20",
-    type: 'Sunny',
-    air: '52'
-  },{
-    day: 'Sunday',
-    temperature: "+23",
-    type: 'Sunny',
-    air: '51'
   }
-];
+}
 
-export const TIMETABLE_ITEMS = [
-  {
-    day: 'Monday',
-    todos: 'work, cleaning, shopping',
-    dayoff: false
+export const ITEMS : ITEM[] = [
+{
+  date: "31/05",
+  day: "Friday",
+  weather: {
+    temperature: "+20",
+    type: "Sun",
+    air: "30"
   },
-  {
-    day: 'Tuesday',
-    todos: 'work, polish',
+  schedule: {
+    todos: "cleaning",
     dayoff: false
+  }
+},
+{
+  date: "1/06",
+  day: "Saturday",
+  weather: {
+    temperature: "+23",
+    type: "Rain",
+    air: "35"
   },
-  {
-    day: 'Wednesday',
-    todos: 'walk',
+  schedule: {
+    todos: "studing",
     dayoff: true
+  }
+},
+{
+  date: "2/06",
+  day: "Sunday",
+  weather: {
+    temperature: "+13",
+    type: "Cloud",
+    air: "12"
   },
-  {
-    day: 'Thursday',
-    todos: 'work, shopping',
-    dayoff: false
-  },
-  {
-    day: 'Friday',
-    todos: 'work, studying',
-    dayoff: false
-  },
-  {
-    day: 'Saturday',
-    todos: 'work, studying, walk',
+  schedule: {
+    todos: "shoping",
     dayoff: true
-  },
-  {
-    day: 'Sunday',
-    todos: '-',
-    dayoff: true
-  },
-];
+  }
+}
+]
+
+

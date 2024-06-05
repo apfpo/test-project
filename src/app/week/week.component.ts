@@ -1,20 +1,30 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TIMETABLE_ITEMS, WEATHER_ITEMS } from '../../shared/consts';
+import { Component, Inject, Injectable, Input } from '@angular/core';
+import { ITEM, ITEMS } from '../../shared/consts';
+import { Show } from '../interfaces';
+import { SCHEDULE_SHOW, WEATHER_SHOW } from '../tokens';
 
 @Component({
   selector: 'app-week',
   templateUrl: './week.component.html',
   styleUrl: './week.component.scss'
 })
+
 export class WeekComponent {
-  content: string | undefined;
+  @Input() data: ITEM[] = [];
+  private currentShow: Show;
 
-  items: any;
+  constructor(
+    @Inject(WEATHER_SHOW) private weatherShow: Show,
+    @Inject(SCHEDULE_SHOW) private scheduleShow: Show
+  ) {
+    this.currentShow = this.weatherShow;
+  }
 
-  constructor(private route: ActivatedRoute) { }
+  setViewType(type: 'weather' | 'schedule') {
+    this.currentShow = type === 'weather' ? this.weatherShow : this.scheduleShow;
+  }
 
-  ngOnInit(): void {
-    this.items = WEATHER_ITEMS;
+  getContent(day: ITEM): string {
+    return this.currentShow.show(day);
   }
 }

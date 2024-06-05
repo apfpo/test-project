@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DayComponent } from './day/day.component';
 import { WeekComponent } from './week/week.component';
 import { NavComponent } from './nav/nav.component';
+import { SCHEDULE_SHOW, WEATHER_SHOW } from './tokens';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { NavComponent } from './nav/nav.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: WEATHER_SHOW, useValue: 'WeatherShow' },
+    { provide: SCHEDULE_SHOW, useValue: 'ScheduleShow' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
