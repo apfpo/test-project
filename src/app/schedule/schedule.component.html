@@ -1,0 +1,9 @@
+<app-week [data]="scheduleList"></app-week>
+<div #schedule>
+    <div *ngFor="let d of scheduleList">
+        <div>
+            <p>DayOff: {{ d.payLoad.dayOff }}</p>
+            <p>Todos: {{ d.payLoad.todos }}</p>
+        </div>
+    </div>
+</div>

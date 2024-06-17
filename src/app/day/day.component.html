@@ -1,4 +1,6 @@
-<div [innerHTML]="content">
-
+<div>
+  <button (click)="onPrev()">Prev</button>
+  <h3>{{ day.date | date: 'dd/MM/yyyy' }} </h3>
+  <button (click)="onNext()">Next</button>
 </div>
 

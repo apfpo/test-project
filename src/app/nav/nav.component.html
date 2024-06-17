@@ -1,4 +1,4 @@
 <nav class="navbar bg-body-tertiary">
-  <button routerLink="/weather" (click)="showWeather()">Weather</button>
-  <button routerLink="/schedule" (click)="showSchedule()">Schedule</button>
+  <button routerLink="/weather" (click)="onTabClick.emit('weather')">Weather</button>
+  <button routerLink="/schedule" (click)="setActiveTab('schedule')">Schedule</button>
 </nav>

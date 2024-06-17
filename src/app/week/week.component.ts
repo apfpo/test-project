@@ -1,30 +1,43 @@
-import { Component, Inject, Injectable, Input } from '@angular/core';
-import { ITEM, ITEMS } from '../../shared/consts';
-import { Show } from '../interfaces';
-import { SCHEDULE_SHOW, WEATHER_SHOW } from '../tokens';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input} from '@angular/core';
+import {WeekItemInterface} from "./week.interface";
+import { DayInterface } from '../day/day.interface';
 
 @Component({
   selector: 'app-week',
   templateUrl: './week.component.html',
-  styleUrl: './week.component.scss'
+  styleUrl: './week.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class WeekComponent {
-  @Input() data: ITEM[] = [];
-  private currentShow: Show;
-
-  constructor(
-    @Inject(WEATHER_SHOW) private weatherShow: Show,
-    @Inject(SCHEDULE_SHOW) private scheduleShow: Show
-  ) {
-    this.currentShow = this.weatherShow;
+  @Input() public data: WeekItemInterface = [];
+  currentDayIndex: number = 0;
+  currentDay: DayInterface | undefined;
+  constructor(private cdr: ChangeDetectorRef) {
   }
 
-  setViewType(type: 'weather' | 'schedule') {
-    this.currentShow = type === 'weather' ? this.weatherShow : this.scheduleShow;
+  ngOnInit() {
+    if (this.data.length > 0) {
+      this.updateCurrentDay();
+    }
   }
 
-  getContent(day: ITEM): string {
-    return this.currentShow.show(day);
+  updateCurrentDay() {
+    this.currentDay = { ...this.data[this.currentDayIndex] };
+    this.cdr.markForCheck(); 
+  }
+
+  showPrevDay() {
+    if (this.currentDayIndex > 0) {
+      this.currentDayIndex--;
+      this.updateCurrentDay();
+    }
+  }
+
+  showNextDay() {
+    if (this.currentDayIndex < this.data.length - 1) {
+      this.currentDayIndex++;
+      this.updateCurrentDay();
+    }
   }
 }

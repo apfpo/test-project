@@ -1,5 +1,9 @@
-<div class="week" #weekView>
-  <ng-container>
-    <app-day *ngFor="let day of data" [content]="getContent(day)"></app-day>
-  </ng-container>
+<div class="week">
+    <div class="week">
+        <app-day 
+          [day]="currentDay"
+          (prevDay)="showPrevDay()"
+          (nextDay)="showNextDay()"
+        ></app-day>
+      </div>
 </div>

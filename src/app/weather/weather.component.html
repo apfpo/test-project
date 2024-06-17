@@ -1,0 +1,10 @@
+<app-week [data]="weatherList"></app-week>
+<div #weather>
+    <div *ngFor="let d of weatherList">
+        <div>
+            <p>Air: {{ d.payLoad.air }}</p>
+            <p>Temperature: {{ d.payLoad.temperature }}</p>
+            <p>Type: {{ d.payLoad.type }}</p>
+        </div>
+    </div>
+</div>
